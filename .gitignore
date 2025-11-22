@@ -1,0 +1,11 @@
+# Dependencias de Node.js
+/node_modules
+
+# Archivos de la plataforma Android
+/android
+
+# Logs y temporales
+*.log
+
+# Archivos del sistema
+.DS_Store
