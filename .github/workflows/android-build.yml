@@ -13,26 +13,24 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # Usamos Node 18, compatible con el servidor
-          cache: 'npm'
+          node-version: '18'
 
       - name: Install Dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Add Android Platform (Capacitor/Cordova)
-        run: npx cap add android
-
-      - name: Sync Capacitor
-        run: npx cap sync
+      - name: Add Android Platform and Sync
+        run: |
+          # Creamos la plataforma Android y forzamos la creación (FIX para el error #7)
+          npx cap add android --force
+          # Sincronizamos el código web
+          npx cap sync android
 
       - name: Build Android Debug APK
-        run: |
-          cd android
-          ./gradlew assembleDebug
+        run: npx cap build android --target=debug
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
