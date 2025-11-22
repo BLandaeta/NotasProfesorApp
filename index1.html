@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Profesor - UI Mobile</title>
+    <link rel="stylesheet" href="style1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="contenedor-movil">
+        
+        <header class="encabezado">
+            <span class="texto-fecha" id="nombre-profesor">Profesor Juan Pérez</span> 
+            <div class="info-perfil">
+                <h1 class="titulo">Clases</h1>
+                <div class="avatar-perfil">
+                    <img src="https://i.ibb.co/L54D2wQ/avatar.png" alt="Perfil">
+                </div>
+            </div>
+        </header>
+        
+        <section class="navegador-materias" id="contenedor-navegador-materias">
+            </section>
+
+        <section class="linea-tiempo-clases">
+            
+            <div class="elemento-tiempo clase-seleccionable" data-clase="introduccion" data-materia="matematicas">
+                <div class="punto-tiempo"></div>
+                <div class="info-clase"> 
+                    <h2 class="titulo-clase">Introducción al Álgebra</h2>
+                    <p class="descripcion-clase">Revisión de exponentes y radicales.</p>
+                </div>
+                <span class="hora-clase">9:00 AM</span>
+            </div>
+
+            <div class="elemento-tiempo clase-seleccionable" data-clase="redaccion" data-materia="ingles">
+                <div class="punto-tiempo"></div>
+                <div class="info-clase">
+                    <h2 class="titulo-clase">Redacción Avanzada</h2>
+                    <p class="descripcion-clase">Ensayo sobre "The Great Gatsby".</p>
+                </div>
+                <span class="hora-clase">10:00 AM</span>
+            </div>
+
+            <div class="elemento-tiempo clase-seleccionable" data-clase="modelado" data-materia="basededatos">
+                <div class="punto-tiempo"></div>
+                <div class="info-clase">
+                    <h2 class="titulo-clase">Modelado ER</h2>
+                    <p class="descripcion-clase">Diseño de esquema para biblioteca virtual.</p>
+                </div>
+                <span class="hora-clase">11:00 AM</span>
+            </div>
+            
+            <div class="elemento-tiempo clase-seleccionable" data-clase="diferenciales" data-materia="matematicas">
+                <div class="punto-tiempo"></div>
+                <div class="info-clase">
+                    <h2 class="titulo-clase">Ecuaciones Diferenciales</h2>
+                    <p class="descripcion-clase">Método de separación de variables.</p>
+                </div>
+                <span class="hora-clase">2:00 PM</span>
+            </div>
+
+            <div class="elemento-tiempo clase-seleccionable ultimo-elemento" data-clase="gramatica" data-materia="ingles">
+                <div class="punto-tiempo"></div>
+                <div class="info-clase">
+                    <h2 class="titulo-clase">Gramática Estructural</h2>
+                    <p class="descripcion-clase">Práctica de tiempos verbales perfectos.</p>
+                </div>
+                <span class="hora-clase">3:00 PM</span>
+            </div>
+            
+            <div class="espaciador-tiempo"></div> 
+        </section>
+
+        <div class="colchon-navegacion"></div> 
+        
+        <footer class="navegacion-inferior">
+            <div class="icono-navegacion activo">🏠</div>
+            <div class="icono-navegacion activo-actual">
+                <span class="punto-pequeño"></span>
+            </div>
+            <div class="icono-navegacion boton-mas">+</div>
+            <div class="icono-navegacion">🔔</div>
+            <div class="icono-navegacion">👤</div>
+        </footer>
+
+    </div>
+    
+    <div id="plantilla-tarjeta-clase">
+        <div class="tarjeta-clase">
+            <div class="detalles-clase">
+                <h2 class="titulo-clase">Título de Clase</h2>
+                <p class="descripcion-clase">Descripción de la clase</p>
+            </div>
+            <span class="hora-clase">00:00 AM</span>
+            
+            <div class="info-adicional">
+                <p>Fecha: <span class="detalle-fecha">14/11/2025</span></p>
+                <p>Sección: <span class="detalle-seccion">A-201</span></p>
+                <p>Aula: <span class="detalle-aula">Laboratorio 3</span></p>
+            </div>
+            
+            <div class="avatares-equipo">
+                <img src="https://i.ibb.co/3s3F0g8/avatar1.png" alt="Miembro 1">
+                <img src="https://i.ibb.co/X3s1J1P/avatar2.png" alt="Miembro 2">
+                <img src="https://i.ibb.co/8D9zN9G/avatar3.png" alt="Miembro 3">
+                <span class="icono-check">✓</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

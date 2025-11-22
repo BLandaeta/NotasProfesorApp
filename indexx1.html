@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>20Pts</title>
+</head>
+<body>
+
+    <div class="contenedor">
+
+        <div class="contenedor-movil">
+
+            <main class="contenedor-principal">
+
+                <div class="contenedor-top">
+                    <div class="text-top">
+                        <h3>Estadisticas</h3>
+                    </div>
+                    
+                    <div class="estadistica-top">
+
+                        <div class="contenedor-circulo">
+                            <div class="progreso-circulo">
+
+                                <svg viewBox="0 0 70 70">
+                                    <circle class="progreso" cx="35" cy="35" r="30"></circle>
+                                    <circle class="progreso-barra progreso-90" cx="35" cy="35" r="30"></circle>
+                                </svg>
+
+                                <span class="valor-progreso">90%</span>
+                            </div>
+                        
+                            <p>Asistencia</p>
+                        </div> 
+            
+
+                        <div class="contenedor-circulo">
+                            <div class="progreso-circulo">
+
+                                <svg viewBox="0 0 70 70">
+                                    <circle class="progreso" cx="35" cy="35" r="30"></circle>
+                                    <circle class="progreso-barra progreso-70" cx="35" cy="35" r="30"></circle>
+                                </svg>
+
+                                <span class="valor-progreso">90%</span>
+                            </div>
+                        
+                            <p>Aprobados</p>
+                        </div> 
+                
+            
+                        <div class="contenedor-circulo">
+                            <div class="progreso-circulo">
+
+                                <svg viewBox="0 0 70 70">
+                                    <circle class="progreso" cx="35" cy="35" r="30"></circle>
+                                    <circle class="progreso-barra progreso-50" cx="35" cy="35" r="30"></circle>
+                                </svg>
+
+                                <span class="valor-progreso">40%</span>
+                            </div>
+                        
+                            <p>Participacion</p>
+                        </div> 
+                    
+                  
+                        <div class="contenedor-circulo">
+                            <div class="progreso-circulo">
+
+                                <svg viewBox="0 0 70 70">
+                                    <circle class="progreso" cx="35" cy="35" r="30"></circle>
+                                    <circle class="progreso-barra progreso-20" cx="35" cy="35" r="30"></circle>
+                                </svg>
+
+                                <span class="valor-progreso">20%</span>
+                            </div>
+                        
+                            <p>Reprobados</p>
+                        </div> 
+                    </div>
+                </div>
+
+
+                <div class="text-acciones">
+                    <h3>Aciones</h3>
+                </div>
+    
+                <div class="contenedor-acciones">
+                    <section class="acciones">
+                        <div class="btn-acciones">
+                            <button id="btn-registrar" class="btn btn-primario">Registrar</button>
+                            <button id="btn-eliminar" class="btn btn-segundario">Eliminar</button>
+                        </div>
+                    </section>
+                </div>
+
+                    <section class="contenedor-tarjetas">
+
+                            <div id="tarjeta-estudiante" class="tarjeta" data-category="Estudiantes">
+                                <div class="tarjeta-icono">
+                                    <i class="fa-solid fa-users"></i> 
+                                </div>
+
+                                <div class="text-tarjeta">
+                                    <h3>45</h3>
+                                    <p>Estudiantes</p>
+                                </div>
+                            </div>
+
+
+                            <div id="tarjeta-clases" class="tarjeta" data-category="Clases">
+                                <div class="tarjeta-icono">
+                                    <i class="fa-solid fa-book"></i>
+                                </div>
+
+                                <div class="text-tarjeta">
+                                    <h3>10</h3>
+                                    <p>Clases</p>
+                                </div>
+                            </div>
+
+
+
+                            <div id="tarjeta-asistencia" class="tarjeta" data-category="Asistencias">
+                                <div class="tarjeta-icono">
+                                    <i class="fa-solid fa-person-circle-check"></i>
+                                </div>
+
+                                <div class="text-tarjeta">
+                                    <h3>120</h3>
+                                    <p>Asistencia</p>
+                                </div>
+                            </div>
+
+
+                            <div id="tarjeta-evaluaciones" class="tarjeta" data-category="Evaluaciones">
+                                <div class="tarjeta-icono">
+                                    <i class="fa-solid fa-clipboard-check"></i>                     
+                                </div>
+
+                                <div class="text-tarjeta">
+                                    <h3>7</h3>
+                                    <p>Evaluaciones</p>
+                                </div>
+                            </div>
+                    </section>
+            </main>
+        </div>
+
+        <nav class="menu-movil">
+            <a class="activa" href=""><i class="fa-solid fa-house"></i></a>
+            <a href="#"><i class="fa-solid fa-clipboard-check"></i></a>
+            <a href="#"><i class="fa-solid fa-user-group"></i></a>
+            <a href="#"><i class="fa-solid fa-user"></i></a>
+            <a href="#"><i class="fa-solid fa-cog"></i></a>
+        </nav>
+    </div>
+</body>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.tarjeta');
+    const btnRegistrar = document.getElementById('btn-registrar');
+    const btnEliminar = document.getElementById('btn-eliminar');
+    const actionButtons = document.querySelector('.btn-acciones');
+    
+    const getTargetData = (category) => {
+        let registroUrl = '#';
+        let eliminacionUrl = '#';
+        let textoRegistro = 'Registrar';
+        let textoEliminar = 'Eliminar';
+        
+        switch (category) {
+            case 'Estudiantes':
+                registroUrl = 'registrar.html';
+                eliminacionUrl = 'gestion-eliminar-estudiantes.html';
+                textoRegistro = 'Nuevo Estudiante';
+                textoEliminar = 'Eliminar Estudiante'; 
+                break;
+            case 'Clases':
+                registroUrl = 'registro-clases.html';
+                eliminacionUrl = 'gestion-eliminar-clases.html';
+                textoRegistro = 'Añadir Clase';
+                textoEliminar = 'Eliminar Clase';
+                break;
+            case 'Asistencias':
+                registroUrl = 'registro-asistencias.html';
+                eliminacionUrl = 'gestion-eliminar-asistencias.html';
+                textoRegistro = 'Registrar Asistencia';
+                textoEliminar = 'Eliminar Asistencia';
+                break;
+            case 'Evaluaciones':
+                registroUrl = 'registro-evaluaciones.html';
+                eliminacionUrl = 'gestion-eliminar-evaluaciones.html';
+                textoRegistro = 'Crear Evaluación';
+                textoEliminar = 'Eliminar Evaluación';
+                break;
+        }
+
+        return { registroUrl, eliminacionUrl, textoRegistro, textoEliminar };
+    };
+
+
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+
+            cards.forEach(c => c.classList.remove('activa'));
+            this.classList.add('activa');
+            actionButtons.classList.add('categoria-selecionada');
+
+            const categoryName = this.getAttribute('data-category');
+            
+            const { registroUrl, eliminacionUrl, textoRegistro, textoEliminar } = getTargetData(categoryName);
+
+            // Asignar las URLs
+            btnRegistrar.setAttribute('data-target', registroUrl);
+            btnEliminar.setAttribute('data-target', eliminacionUrl);
+
+            btnRegistrar.textContent = textoRegistro;
+            btnEliminar.textContent = textoEliminar;
+        });
+    });
+
+    const handleButtonClick = (button) => {
+        const targetUrl = button.getAttribute('data-target');
+        
+        if (targetUrl && targetUrl !== '#') {
+            window.location.href = targetUrl;
+        } else {
+            console.warn(`URL de destino no asignada para el botón ${button.id}.`);
+        }
+    };
+    
+    btnRegistrar.addEventListener('click', () => handleButtonClick(btnRegistrar));
+    btnEliminar.addEventListener('click', () => handleButtonClick(btnEliminar));
+});
+
+const setAppHeight = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
+};
+
+setAppHeight();
+window.addEventListener('resize', setAppHeight);
+</script>
+</html>

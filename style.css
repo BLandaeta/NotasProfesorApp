@@ -1,0 +1,404 @@
+/* --- CONFIGURACIÓN GLOBAL Y FUENTES --- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+    /* Colores ajustados de la imagen (Fondo Claro, Elementos Oscuros) */
+    --bg-main: #FFFFFF;        
+                            --bg-outside: #F0E0E0;     
+    --card-color: #252525;     
+    --card-light: #f3f3f3;     
+                            --font-color-primary: #1A1A1A;   
+    --font-color-secondary: #777777; 
+    --stat-fill: #1A1A1A;      
+    --stat-outline: #E0E0E0;   
+    --button-primary-bg: #1A1A1A;     
+    --button-primary-text: #FFFFFF;   
+    --button-secondary-bg: #FFFFFF;   
+    --button-secondary-text: #1A1A1A; 
+
+
+    --circle-bg: #404040;      /* Fondo oscuro del hueco interior del círculo */
+    --circle-fill: #F8F8F8;    /* El arco blanco exterior */
+    --progress-color: #00BFFF; /* Color azul para el progreso (si se usa JS) */
+    --text-color-light: #FFFFFF; /* Color de texto para el porcentaje */
+    --text-color-secondary-dark: #A0A0A0; /* Color de texto para "Total" *
+    
+    --nav-height: 3.5rem; /* Altura fija para el menú */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Inter', sans-serif;
+    height: 100%;
+    font-size: 1rem;
+    overflow: hidden; 
+}
+
+/* --- SIMULACIÓN DE LA PANTALLA MÓVIL (CONTENEDOR PRINCIPAL) --- */
+.mobile-screen-wrapper {
+    max-width: 450px; 
+    margin: 0 auto; 
+    min-height: var(--app-height); 
+    height: var(--app-height); 
+    overflow-y: auto; 
+    background-color: var(--bg-main); 
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1); 
+    position: relative; 
+    overflow-x: hidden; 
+}
+
+/* --- CONTENEDOR DE SCROLL (EL CONTENIDO VISIBLE) --- */
+
+.dashboard-container {
+    height: 100%;
+    overflow-y: hidden; 
+    overflow-x: hidden; 
+    padding-bottom: 0; 
+    display: block; 
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.main-content {
+    padding: 0.8rem; 
+    padding-bottom: 6rem; 
+}
+
+/* Encabezado */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-welcome h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-weight: 400;
+    padding-left: 0.5rem;
+}
+.header-welcome p {
+    font-size: 1.2rem;
+    color: var(--button-secondary-bg);
+    font-weight: 50;
+    text-align: center;
+}
+
+/* --- CONFIGURACIÓN DEL BLOQUE OSCURO CONTENEDOR --- */
+.top-row {
+    margin-top: 0.2rem;
+    background-color: var(--card-color); 
+    color: var(--text-color-light); 
+    padding: 1.5rem 1rem;
+    border-radius: 0.75rem;
+    text-align: center; 
+}
+
+/* --- CÍRCULO DE PROGRESO BASE (Contenedor que alberga el SVG) --- */
+.progress-circle {
+    position: relative;
+    width: 4.3rem; 
+    height: 4.3rem;
+    border-radius: 50%;
+    display: block; 
+    background: var(--card-color); 
+    overflow: hidden; 
+}
+
+/* El SVG debe ocupar todo el espacio del contenedor de 70px */
+.progress-circle svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg); 
+    z-index: 1;
+}
+
+/* El valor de progreso (el "90%" en el centro) */
+.progress-value {
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-color-light); 
+    z-index: 2;
+    white-space: nowrap;
+}
+
+/* Pista de Fondo (Gris/Blanco) */
+.progress-track {
+    fill: none;
+    stroke: var(--circle-fill); 
+    stroke-width: 5; 
+}
+
+/* Barra de Progreso (Azul) */
+.progress-bar {
+    fill: none;
+    stroke: var(--progress-color); 
+    stroke-width: 5; 
+    stroke-dasharray: 188.5; 
+    stroke-dashoffset: 188.5; 
+    stroke-linecap: round;
+}
+
+.progress-90 {
+    /* (188.5 * (1 - 0.90)) = 18.85 */
+    stroke-dashoffset: 18.85; 
+}
+
+.progress-75 {
+    /* (188.5 * (1 - 0.75)) = 47.125 */
+    stroke-dashoffset: 47.125; 
+}
+
+.progress-25 {
+    /* (188.5 * (1 - 0.82)) = 33.93 */
+    stroke-dashoffset: 180.93; 
+}
+
+.progress-45 {
+    /* (188.5 * (1 - 0.88)) = 22.62 */
+    stroke-dashoffset: 100.62; 
+}
+
+/* --- CONTENEDOR DE LOS CÍRCULOS --- */
+.stats-overview {
+    display: flex;
+    margin-top:0.5rem;
+    justify-content: space-around; 
+    align-items: flex-start; 
+    gap: 0.5rem; 
+}
+
+/* --- WRAPPER DE CADA CÍRCULO CON SU TEXTO --- */
+.stat-circle-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0; 
+}
+
+/* Estilo para el texto "Total" */
+.stat-circle-wrapper p { 
+    font-size: 0.8rem;
+    color: var(--text-color-secondary-dark);
+    margin-top: 0.5rem; 
+    white-space: nowrap; 
+}
+
+.marco {
+    background-color: var(--card-light);
+    margin-top: 0.1rem;
+    padding: 0.5rem;
+    border-radius: 0.6rem;
+}
+
+/* Acciones */
+.actions {
+    background-color: transparent; 
+    padding: 0 0 0;
+}
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+.btn {
+    flex: 1; 
+    padding: 0.8rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.texto-btn {
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.btn-primary {
+    background-color: var(--button-primary-bg);
+    color: var(--button-primary-text);
+}
+.btn-secondary {
+    background-color: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
+}
+
+
+.info-cards {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 1rem;
+}
+
+
+.card {
+    background-color: var(--card-light); 
+    border-radius: 0.75rem;
+    padding: 1.2rem;
+    min-height: 150px; 
+    display: block; 
+    position: relative; 
+    border: none; 
+    text-align: center; 
+    color: var(--font-color-primary); 
+}
+
+
+
+/* --- REGLAS DEL ICONO FLOTANTE Y CÍRCULO --- */
+.card-icon-wrapper {
+    background-color: var(--bg-main);
+    border: 0.06rem solid #DDDDDD; 
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute;
+    top: 0.6rem; 
+    left: 0.6rem; 
+    padding-top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+/* Estilo para el icono (i) dentro del círculo */
+.card-icon-wrapper i {
+    font-size: 1rem; 
+    color: var(--font-color-secondary); 
+    margin: 0;
+    position: static; 
+}
+
+/* --- ESTILOS DEL TEXTO INTERNO --- */
+.card h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.1rem;
+    line-height: 1;
+    text-align: center;
+}
+
+/* El texto de la categoría (p) */
+.card p {
+    font-size: 1rem;
+    color: var(--font-color-secondary);
+    font-weight: 500;
+    text-align: center;
+}
+
+.texto-card {
+    margin-top: 2.1rem;
+}
+
+.texto-card p {
+    margin-top: 1.9rem;
+    font-size: 0.9rem;
+}
+
+.card.active h3 {
+    color: var(--bg-main);
+}
+
+
+/* --- ESTILOS DINÁMICOS POR SELECCIÓN DE CATEGORÍA --- */
+
+.action-buttons #btn-registrar {
+    background-color: var(--button-primary-bg); 
+    color: var(--button-primary-text); 
+}
+.action-buttons #btn-explorar {
+    background-color: var(--button-secondary-bg); 
+    color: var(--button-secondary-text);
+}
+.category-selected #btn-registrar {
+    background-color:  var(--progress-color); 
+    color: white;
+}
+.card.active {
+    background-color: var(--button-primary-bg);
+    box-shadow: 0 0 10px rgba(0, 214, 247, 0.861); 
+    border: 0.1rem solid #00e1ff; 
+    opacity: 0.9;
+}
+.card.active .card-icon-wrapper {
+    width: 0;
+    height: 0;
+    top: 5.5rem;
+    left: 50%;
+    right: auto;
+    border: 0;
+    transform: translate(-50%, -50%); 
+    transition: all 0.5s ease-in-out;
+}
+.card.active .card-icon-wrapper i {
+    font-size: 2rem;
+
+    color: #ffffff; /* ¡El color base del ícono se mantiene BLANCO! */
+    
+    /* PROPIEDAD CLAVE: Simular el efecto de neón/LED azul */
+    text-shadow: 
+    0 0 5px #00e1ff,   /* Azul cian/eléctrico */
+    0 0 10px #00e1ff, 
+    0 0 20px #00e1ff,
+    0 0 40px #00e1ff,  /* Intensifica el brillo con más capas del mismo color */
+    0 0 80px rgba(0, 214, 247, 0.861);
+}
+.card.active .texto-card {
+    margin-top: 0rem;
+}
+.card.active .texto-card h3 {
+    margin-bottom: 4rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 1, 1);
+}
+.card i {
+    font-size: 1.5rem; 
+    margin-bottom: 0.5rem; 
+    position: static;
+}
+
+/* --- NAVEGACIÓN MÓVIL INFERIOR (MENU) --- */
+
+.nav-mobile {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--card-color); 
+    border-radius: 0.6rem;
+    padding: 0.25rem 0.5rem;
+    width: 90%; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    bottom: 1rem;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.4); 
+    position: absolute; 
+    z-index: 1000;
+}
+.nav-mobile a {
+    color: var(--font-color-secondary); 
+    text-decoration: none;
+    bottom: 1rem;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    
+}
+.nav-mobile a.active {
+    color: #00beed; 
+    background-color: #FFFFFF;
+    padding: 0.6rem;
+    border-radius: 0.6rem;
+    
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>20Pts</title>
+</head>
+<body>
+
+    <div class="contenedor">
+
+        <div class="contenedor-movil">
+
+            <main class="contenedor-principal">
+
+                <div class="contenedor-top">
+
+                    <div class="icono-top">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    
+                </div>
+
+                    <section class="contenedor-formulario ">
+
+                        <form action="#" method="POST">
+        
+                            <div class="contenedor-input">
+                                <label for="first-name">Cedula</label>
+                                <div class="input">
+                                    <input type="text" id="cedula" name="cedula" placeholder="Ej: Wasim">
+                                </div>
+                            </div>
+                            
+                            <div class="contenedor-input">
+                                <label for="first-name">Nombre</label>
+                                <input type="text"id="nombre" name="nombre" placeholder="Ej: Wasim">
+                            </div>
+                            
+                            <div class="contenedor-input">
+                                <label for="last-name">Apellido</label>
+                                <input type="text" id="apellido" name="apellido" placeholder="Ej: Bari">
+                            </div>
+            
+                            <div class="contenedor-input">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" name="email" placeholder="Ej:hola@dream.com">
+                            </div>
+            
+                            <div class="contenedor-input">
+                                <label for="password">Telefono</label>
+                                <input type="password" id="telefono" name="telefono" placeholder="Ej:0412-558058">
+                            </div>
+            
+                            <button type="submit" id="submitBtn" class="signup-button" disabled>Registrar Estudiante</button>
+                        </form>
+
+                    </section>
+            </main>
+        </div>
+
+        <nav class="menu-movil">
+            <a class="activa" href=""><i class="fa-solid fa-house"></i></a>
+            <a href="#"><i class="fa-solid fa-clipboard-check"></i></a>
+            <a href="#"><i class="fa-solid fa-user-group"></i></a>
+            <a href="#"><i class="fa-solid fa-user"></i></a>
+            <a href="#"><i class="fa-solid fa-cog"></i></a>
+        </nav>
+    </div>
+</body>
+
+<script>
+
+// Obtiene una NodeList (lista) de todos los inputs dentro del formulario.
+const inputs = document.querySelectorAll('.contenedor-formulario input');
+
+// Obtiene la referencia al botón que modificamos con el ID.
+const submitBtn = document.getElementById('submitBtn');
+
+// Función para verificar si todos los inputs están llenos.
+const checkInputs = () => {
+    // El método 'every' verifica si TODOS los elementos de la lista cumplen una condición.
+    const allFilled = Array.from(inputs).every(input => {
+        // La condición es: el valor del input NO está vacío (trim() elimina espacios).
+        return input.value.trim() !== '';
+    });
+
+    // Si todos están llenos:
+    if (allFilled) {
+        submitBtn.classList.add('activo'); // Añade la clase CSS 'activo'
+        submitBtn.disabled = false; // Opcional: Deshabilita el botón al principio, y lo habilita al llenar.
+    } else {
+        submitBtn.classList.remove('activo'); // Remueve la clase 'activo'
+        submitBtn.disabled = true;
+    }
+};
+
+// Asigna la función de verificación a cada input para que se ejecute cada vez que el valor cambie.
+inputs.forEach(input => {
+    input.addEventListener('input', checkInputs);
+});
+
+// Llama a la función una vez al cargar la página para establecer el estado inicial.
+checkInputs();    
+
+const setAppHeight = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
+};
+
+setAppHeight();
+window.addEventListener('resize', setAppHeight);
+</script>
+</html>
