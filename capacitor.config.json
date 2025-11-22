@@ -1,0 +1,6 @@
+{
+    "appId": "com.blandaeta.notasprofesorapp",
+    "appName": "NotasProfesorApp",
+    "webDir": ".",
+    "bundledWebRuntime": false
+  }
